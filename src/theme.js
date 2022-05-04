@@ -20,9 +20,15 @@ const COLORS = {
   secondary: '#ffffff',
 };
 
+const FONTS = {
+  header: `'Atma', 'Gaegu',cursive`,
+  content: `'Gaegu',cursive`,
+};
+
 const theme = {
-  color: COLORS,
+  colors: COLORS,
   elements: ELEMENT_COLORS,
+  fonts: FONTS,
 };
 
 export default theme;
