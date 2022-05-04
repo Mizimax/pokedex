@@ -25,10 +25,13 @@ const FONTS = {
   content: `'Gaegu',cursive`,
 };
 
+const SPACES = [0, 4, 8, 16, 24, 32, 48, 64, 128, 256, 512];
+
 const theme = {
   colors: COLORS,
   elements: ELEMENT_COLORS,
   fonts: FONTS,
+  space: SPACES,
 };
 
 export default theme;
