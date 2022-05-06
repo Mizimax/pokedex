@@ -6,7 +6,6 @@ const pokemonListURL = 'http://localhost:3030/api/cards';
 const usePokemonList = ({ search }) => {
   const [pokemonList, setPokemonList] = useState([]);
   const getPokemonList = useCallback(async () => {
-    console.log('search : ', search);
     try {
       const queryURL = new URL(pokemonListURL);
       if (search) queryURL.searchParams.append('name', search);
