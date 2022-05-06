@@ -5,6 +5,11 @@ import Card from '../Card';
 import { Box, Flex, Text } from '../Base';
 import HappinessImage from '../../cute.png';
 
+export const ACTIONS = {
+  ADD: 'ADD',
+  REMOVE: 'REMOVE',
+};
+
 const ImageWrapper = styled(Box)`
   max-width: 150px;
   width: 100%;
@@ -22,6 +27,25 @@ const LevelTubeValue = styled(Box)`
   height: 100%;
   border-radius: 15px;
   background-color: #f3701a;
+`;
+
+const CTAButton = styled.div`
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-family: ${(props) => props.theme.fonts.header};
+  color: #dc7777;
+  font-size: 36px;
+  cursor: pointer;
+`;
+
+const StyledCard = styled(Card)`
+  &:hover {
+    & > ${CTAButton} {
+      display: block;
+    }
+  }
 `;
 
 const LevelTube = ({ progress }) => {
@@ -45,10 +69,11 @@ const LevelStatus = ({ status, level }) => {
   );
 };
 
-const PokemonCard = ({ title, status, imageUrl, ...props }) => {
-  const { hp, strength, weakness, damage, happiness } = status || {};
+const PokemonCard = ({ title, status, imageUrl, action, onActionClick, ...props }) => {
+  const { hp, strength, weakness, happiness } = status || {};
   return (
-    <Card p={3} {...props}>
+    <StyledCard p={3} style={{ position: 'relative' }} {...props}>
+      <CTAButton onClick={onActionClick}>{action === ACTIONS.ADD ? 'ADD' : 'X'}</CTAButton>
       <Flex>
         <ImageWrapper>
           <img width={'100%'} src={imageUrl} alt={title} />
@@ -72,7 +97,7 @@ const PokemonCard = ({ title, status, imageUrl, ...props }) => {
           </Box>
         </Box>
       </Flex>
-    </Card>
+    </StyledCard>
   );
 };
 
